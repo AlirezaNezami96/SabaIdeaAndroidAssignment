@@ -7,7 +7,7 @@ import retrofit2.http.Path
 
 interface SearchService {
 
-    @GET("/movie/movie/list/tagid/1000300/text/{query}/sug/on")
+    @GET("api/en/v1/movie/movie/list/tagid/1000300/text/{query}/sug/on")
     suspend fun getCoffeeMachine(
         @Path("query") query: String,
         @Header("jsonType") type: String = "simple"

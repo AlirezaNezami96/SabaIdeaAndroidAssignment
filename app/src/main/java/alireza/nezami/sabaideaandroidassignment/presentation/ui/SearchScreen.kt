@@ -2,12 +2,12 @@ package alireza.nezami.sabaideaandroidassignment.presentation.ui
 
 
 import alireza.nezami.sabaideaandroidassignment.R
+import alireza.nezami.sabaideaandroidassignment.domain.Movie
 import alireza.nezami.sabaideaandroidassignment.presentation.components.InputWrapper
 import alireza.nezami.sabaideaandroidassignment.utils.Constants.SEARCH_MAX_CHAR
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
@@ -31,6 +31,8 @@ import androidx.compose.ui.unit.dp
 fun SearchScreen(
     viewModel: SearchViewModel
 ) {
+    val movieListState by viewModel.movieList.collectAsState()
+
     val inputWrapper by remember {
         mutableStateOf(InputWrapper())
     }
@@ -48,11 +50,10 @@ fun SearchScreen(
         mutableStateOf(false)
     }
 
-    Box(modifier = Modifier.fillMaxSize()) {
+    Column(modifier = Modifier.fillMaxSize()) {
         SearchBox(
             modifier = Modifier
-                .fillMaxWidth()
-                .align(Alignment.TopCenter),
+                .fillMaxWidth(),
             fieldValue = fieldValue,
             showClearButton = showClearButtonState,
             onValueChange = {
@@ -69,6 +70,44 @@ fun SearchScreen(
                 showClearButtonState = false
             }
         )
+
+        MovieList(
+            modifier = Modifier
+                .fillMaxSize()
+                .weight(1f),
+            state = movieListState
+        )
+    }
+}
+
+@Composable
+fun MovieList(modifier: Modifier, state: SearchScreenState<List<Movie>>) {
+    Box(modifier = modifier) {
+        if (state is SearchScreenState.LOADING) {
+            CircularProgressIndicator(
+                modifier = Modifier.align(Alignment.Center)
+            )
+        }
+        if (state is SearchScreenState.ERROR) {
+            Text(
+                text = state.message ?: stringResource(R.string.something_happend),
+                modifier = Modifier.align(Alignment.Center)
+            )
+        }
+        if (state is SearchScreenState.SUCCESS) {
+            LazyColumn {
+                items(state.value) { item ->
+                    MovieItem(item)
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun MovieItem(item: Movie) {
+    Card() {
+        
     }
 }
 
