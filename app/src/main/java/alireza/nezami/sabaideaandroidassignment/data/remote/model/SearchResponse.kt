@@ -1,6 +1,7 @@
 package alireza.nezami.sabaideaandroidassignment.data.remote.model
 
 
+import alireza.nezami.sabaideaandroidassignment.domain.Movie
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -210,6 +211,21 @@ data class SearchResponse(
             val flag: String,
             @Json(name = "text")
             val text: String
+        )
+    }
+}
+
+suspend fun SearchResponse.toDomainModel(): List<Movie> {
+    return this.data.map { data ->
+        Movie(
+            movieTitle = data.movieTitle,
+            hD = data.hD,
+            description = data.descr,
+            pic = data.pic.movieImgM,
+            rateAverage = data.rateAvrage,
+            proYear = data.proYear,
+            imdbRate = data.imdbRate,
+            categories = data.categories.map { it.title },
         )
     }
 }
