@@ -24,7 +24,7 @@ android {
 
     buildTypes {
         debug {
-            buildConfigField("String", "API_URI", "\"https://www.filimo.com/api/en/v1/\"")
+            buildConfigField("String", "API_URI", "\"https://www.filimo.com/\"")
         }
 
         release {
