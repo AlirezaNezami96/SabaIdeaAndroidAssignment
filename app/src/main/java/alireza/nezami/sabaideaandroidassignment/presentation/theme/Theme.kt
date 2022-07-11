@@ -1,4 +1,4 @@
-package alireza.nezami.sabaideaandroidassignment.ui.theme
+package alireza.nezami.sabaideaandroidassignment.presentation.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme

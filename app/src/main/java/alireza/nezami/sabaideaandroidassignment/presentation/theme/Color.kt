@@ -1,4 +1,4 @@
-package alireza.nezami.sabaideaandroidassignment.ui.theme
+package alireza.nezami.sabaideaandroidassignment.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 
