@@ -1,11 +1,13 @@
 buildscript {
     ext {
         compose_version = '1.1.0-beta01'
+        constraint_version = '1.0.0-beta02'
         dagger_version = "2.42"
         logging_interceptor_version = "5.0.0-alpha.3"
         retrofit_version = "2.9.0"
         coroutines_version = "1.6.1"
         coil_version = "2.1.0"
+        coil_compose_version = "2.1.0"
         moshi_version = "1.13.0"
     }
 

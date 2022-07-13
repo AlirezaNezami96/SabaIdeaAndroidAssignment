@@ -2,4 +2,5 @@
     <string name="app_name">SabaIdea Android Assignment</string>
     <string name="search_movies">Search movies</string>
     <string name="something_happend">Something happend!!</string>
+    <string name="HD">HD</string>
 </resources>

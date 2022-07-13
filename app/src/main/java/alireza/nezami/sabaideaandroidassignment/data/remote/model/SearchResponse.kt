@@ -28,8 +28,6 @@ data class SearchResponse(
         val movieTitle: String,
         @Json(name = "movie_title_en")
         val movieTitleEn: String,
-        @Json(name = "tag_id")
-        val tagId: Any,
         @Json(name = "serial")
         val serial: Serial,
         @Json(name = "watermark")
@@ -49,7 +47,7 @@ data class SearchResponse(
         @Json(name = "descr")
         val descr: String,
         @Json(name = "cover")
-        val cover: String,
+        val cover: String?,
         @Json(name = "publish_date")
         val publishDate: String,
         @Json(name = "age_range")
@@ -80,8 +78,6 @@ data class SearchResponse(
         val languageInfo: LanguageInfo,
         @Json(name = "director")
         val director: String,
-        @Json(name = "last_watch")
-        val lastWatch: List<Any>,
         @Json(name = "freemium")
         val freemium: Boolean,
         @Json(name = "position")
@@ -115,10 +111,6 @@ data class SearchResponse(
             val relType: String,
             @Json(name = "rel_id")
             val relId: String,
-            @Json(name = "rel_uid")
-            val relUid: Any,
-            @Json(name = "rel_title")
-            val relTitle: Any,
             @Json(name = "rel_type_txt")
             val relTypeTxt: String
         )
@@ -139,8 +131,6 @@ data class SearchResponse(
             val exclusive: Boolean,
             @Json(name = "commingsoon")
             val commingsoon: Boolean,
-            @Json(name = "info")
-            val info: List<Any>
         )
 
         @JsonClass(generateAdapter = true)
@@ -222,7 +212,6 @@ suspend fun SearchResponse.toDomainModel(): List<Movie> {
             hD = data.hD,
             description = data.descr,
             pic = data.pic.movieImgM,
-            rateAverage = data.rateAvrage,
             proYear = data.proYear,
             imdbRate = data.imdbRate,
             categories = data.categories.map { it.title },

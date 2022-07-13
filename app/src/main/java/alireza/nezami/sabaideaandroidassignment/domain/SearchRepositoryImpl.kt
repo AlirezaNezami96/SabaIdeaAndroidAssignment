@@ -17,8 +17,10 @@ class SearchRepositoryImpl @Inject constructor(
 
 ) : SearchRepository {
     override suspend fun searchMoviesWithQuery(query: String): Flow<Result<SearchResponse>> = flow {
-        safeApiCall(dispatcher) {
-            searchService.getCoffeeMachine(query)
-        }
+        emit(
+            safeApiCall(dispatcher) {
+                searchService.getCoffeeMachine(query)
+            }
+        )
     }
 }

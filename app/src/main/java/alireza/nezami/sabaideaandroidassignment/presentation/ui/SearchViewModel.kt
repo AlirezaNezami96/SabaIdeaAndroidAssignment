@@ -21,6 +21,7 @@ class SearchViewModel @Inject constructor(
         MutableStateFlow<SearchScreenState<List<Movie>>>(SearchScreenState.EMPTY)
     val movieList = _movieList
 
+
     val onQueryTextChange: (String) -> Unit = debounce(
         300L,
         viewModelScope,
