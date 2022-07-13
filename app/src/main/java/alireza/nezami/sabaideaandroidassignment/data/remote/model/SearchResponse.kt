@@ -76,8 +76,6 @@ data class SearchResponse(
         val audio: Audio,
         @Json(name = "language_info")
         val languageInfo: LanguageInfo,
-        @Json(name = "director")
-        val director: String,
         @Json(name = "freemium")
         val freemium: Boolean,
         @Json(name = "position")
@@ -101,8 +99,6 @@ data class SearchResponse(
             val partText: String,
             @Json(name = "season_text")
             val seasonText: String,
-            @Json(name = "last_part")
-            val lastPart: String
         )
 
         @JsonClass(generateAdapter = true)
