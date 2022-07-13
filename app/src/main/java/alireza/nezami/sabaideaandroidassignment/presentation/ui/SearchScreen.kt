@@ -76,10 +76,11 @@ fun SearchScreen(
             },
             onClear = {
                 showClearButtonState = false
+                fieldValue = TextFieldValue()
             }
         )
 
-        MovieList(
+        Content(
             modifier = Modifier
                 .fillMaxSize(),
             state = movieListState
@@ -88,7 +89,7 @@ fun SearchScreen(
 }
 
 @Composable
-fun MovieList(modifier: Modifier, state: SearchScreenState<List<Movie>>) {
+fun Content(modifier: Modifier, state: SearchScreenState<List<Movie>>) {
     Box(modifier = modifier) {
         if (state is SearchScreenState.LOADING) {
             CircularProgressIndicator(

@@ -37,14 +37,12 @@ class SearchViewModel @Inject constructor(
                 is Result.NetworkError -> {
                     _movieList.value = SearchScreenState.NETWORK
                 }
-                is Result.Loading -> {
-                    _movieList.value = SearchScreenState.LOADING
-                }
             }
         }
     }
 
     fun searchMovies(query: String) = viewModelScope.launch {
+        _movieList.value = SearchScreenState.LOADING
         onQueryTextChange(query)
     }
 }
